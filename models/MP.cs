@@ -8,17 +8,22 @@ public class MP{
     }    
 
     public Nota? Nota (float[] hores){
-        //Cal tenir en compte les hores de cada UF dins l'MP. 
-        throw new NotImplementedException();
+        #pragma warning disable CS8602 // Dereference of a possibly null reference.
+        var notes = this.UFs.OrderBy(x => x.Nom).Where(x => x.Nota != null).Select(x => x.Nota.Real).ToList();
+        #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
-        // var ufs = this.UFs.Where(x => x.Nota != null);
-        // if(ufs.Count() == 0) return null;
-        // else{
-        //     #pragma warning disable CS8602 // Dereference of a possibly null reference.
-        //     float mitja = ufs.Sum(x => x.Nota.Mitja) / ufs.Count();
-        //     float real = ufs.Where(x => x.Nota.Real < 4).Count() == 0 ? mitja : Math.Min(3.9f, mitja); 
-        //     #pragma warning restore CS8602 // Dereference of a possibly null reference.
-        //     return new Nota(mitja, real);
-        // }
+        if(notes.Count != hores.Count()) return null;   //Not finalized course.
+        var suspes = notes.Where(x => x < 5).Count() > 0;
+        
+
+        var total = hores.Sum(x => x);
+        var nota = 0f;
+
+        for(int i = 0; i < hores.Length; i++){
+            var p = hores[i] / total;
+            nota += notes[i] * p;                        
+        }
+
+        return new Nota(nota, suspes ? 4 : nota);
     }
 }
