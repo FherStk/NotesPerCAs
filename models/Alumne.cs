@@ -21,7 +21,7 @@ public class Alumne{
                 if(nota != null) info += $"      {clean(uf.Nom)}:\n         Nota Real: {nota.Real}\n         Nota mitja: {nota.Mitja}\n";
                 else info += $"      {clean(uf.Nom)}:\n         Encara no s'ha cursat.\n";
 
-                if(nota != null && nota.Mitja != nota.Real){
+                if(nota != null && (nota.Mitja != nota.Real || nota.Mitja < 5)){
                     //Cal recuperar quelcom
 
                     info += $"         Cal recuperar els següents CAs:\n";
