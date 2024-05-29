@@ -361,3 +361,5 @@ core/config/gdrive_account.txt
 core/config/gdrive_secret.json
 scripts/custom/*.yaml
 input/notes.csv
+
+output/*

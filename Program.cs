@@ -51,6 +51,9 @@ foreach(var line in lines.Skip(1)){
     mps.Clear();
 }
 
+var dir = "output";
+Directory.CreateDirectory(dir);
 foreach(var alumne in alumnes){
+    File.WriteAllText(Path.Combine(dir, $"{alumne.Cognoms}, {alumne.Nom}.txt"), alumne.toString());
     Console.WriteLine(alumne.toString());    
 }
