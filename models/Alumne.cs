@@ -18,13 +18,13 @@ public class Alumne{
             info += $"   {clean(mp.Nom)}:\n";
 
             if(nota != null){
-                info += $"      Nota butlletí (redondeig): {Math.Round(nota.Real)}\n      Nota real (amb decimals): {nota.Real}\n      Nota mitjana (sense tenir en compte les penalitzacions): {nota.Mitja}\n";
+                info += $"      Nota butlletí (arrodoniment): {Math.Round(nota.Real)}\n      Nota real (amb decimals): {nota.Real}\n      Nota mitjana (sense tenir en compte les penalitzacions): {nota.Mitja}\n";
                 info += $"\n";
             }
 
             foreach(var uf in mp.UFs){
                 nota = uf.Nota;
-                if(nota != null) info += $"      {clean(uf.Nom)}:\n         Nota butlletí (redondeig): {Math.Round(nota.Real)}\n         Nota real (amb decimals): {nota.Real}\n         Nota mitjana (sense tenir en compte les penalitzacions): {nota.Mitja}\n";
+                if(nota != null) info += $"      {clean(uf.Nom)}:\n         Nota butlletí (arrodoniment): {Math.Round(nota.Real)}\n         Nota real (amb decimals): {nota.Real}\n         Nota mitjana (sense tenir en compte les penalitzacions): {nota.Mitja}\n";
                 else info += $"      {clean(uf.Nom)}:\n         Encara no s'ha cursat.\n";
 
                 if(nota != null && (nota.Mitja != nota.Real || nota.Mitja < 5)){
